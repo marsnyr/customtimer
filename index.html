@@ -105,7 +105,7 @@
       margin-bottom: 20px;
     }
     .set-durations p {
-      font-size: 1.5rem;
+      font-size: 1rem; /* Further reduced font size */
       margin: 5px 0;
     }
   </style>
@@ -138,7 +138,7 @@
       </label>
       <label>
         Exhale Duration (sec):
-        <input type="number" id="exhale-duration" value="0.0" min="0.0" step="0.1">
+        <input type="number" id="exhale-duration" value="0.0" min="0.0" max="7.5" step="0.1">
       </label>
       <label>
         Hold After Exhale Duration (sec):
@@ -276,8 +276,8 @@
         alert('Hold after inhale duration cannot be negative.');
         return;
       }
-      if (isNaN(exhaleDuration) || exhaleDuration < 0) {
-        alert('Exhale duration cannot be negative.');
+      if (isNaN(exhaleDuration) || exhaleDuration < 0 || exhaleDuration > 7.5) {
+        alert('Exhale duration must be between 0 and 7.5 seconds.');
         return;
       }
       if (isNaN(hold2Duration) || hold2Duration < 0) {

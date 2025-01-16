@@ -24,8 +24,34 @@
       text-align: center;
     }
 
+    .custom-inputs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 0 auto 20px;
+      color: #e0e0e0;
+      width: 60%;
+    }
+
+    .custom-inputs label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .custom-inputs input {
+      width: 80%;
+      padding: 5px;
+      border: 1px solid #34495e;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 0 auto;
+    }
+
     .phase {
-      font-size: 2rem;
+      font-size: 1.5rem;
       margin-bottom: 10px;
       font-weight: 600;
       font-family: 'Playfair Display', serif;
@@ -33,8 +59,8 @@
 
     .circle {
       position: relative;
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       margin: 0 auto 10px;
       border-radius: 50%;
       background-color: transparent;
@@ -65,15 +91,15 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2rem;
+      font-size: 1.2rem;
       font-weight: 600;
       color: #e0e0e0;
     }
 
     .controls button {
-      padding: 10px 20px;
-      margin: 0 10px;
-      font-size: 1rem;
+      padding: 8px 16px;
+      margin: 5px;
+      font-size: 0.9rem;
       font-family: 'Open Sans', Arial, sans-serif;
       font-weight: 600;
       border: none;
@@ -110,51 +136,31 @@
     }
 
     .total-duration {
-      font-size: 1.25rem;
-      margin-bottom: 5px;
-      color: #e0e0e0;
-    }
-
-    .time-left-label {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      color: #e0e0e0;
-    }
-
-    .custom-inputs {
-      margin-bottom: 20px;
-      color: #e0e0e0;
-    }
-
-    .custom-inputs label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .custom-inputs input {
-      width: 100px;
-      margin-bottom: 10px;
-      padding: 5px;
-      border: 1px solid #34495e;
-      border-radius: 5px;
       font-size: 1rem;
+      margin-bottom: 5px;
+      color: #e0e0e0;
     }
   </style>
 </head>
 <body>
   <div class="timer-container">
     <div class="custom-inputs">
-      <label for="inhale-duration">Inhale Duration (s):</label>
-      <input type="number" id="inhale-duration" step="0.1" min="0.1" value="4">
-
-      <label for="hold1-duration">First Hold Duration (s):</label>
-      <input type="number" id="hold1-duration" step="0.1" min="0.1" value="0">
-
-      <label for="exhale-duration">Exhale Duration (s):</label>
-      <input type="number" id="exhale-duration" step="0.1" min="0.1" value="4">
-
-      <label for="hold2-duration">Second Hold Duration (s):</label>
-      <input type="number" id="hold2-duration" step="0.1" min="0.1" value="0">
+      <div>
+        <label for="inhale-duration">Inhale (s):</label>
+        <input type="number" id="inhale-duration" step="0.1" min="0.1" value="4">
+      </div>
+      <div>
+        <label for="hold1-duration">1st Hold (s):</label>
+        <input type="number" id="hold1-duration" step="0.1" min="0.1" value="0">
+      </div>
+      <div>
+        <label for="exhale-duration">Exhale (s):</label>
+        <input type="number" id="exhale-duration" step="0.1" min="0.1" value="4">
+      </div>
+      <div>
+        <label for="hold2-duration">2nd Hold (s):</label>
+        <input type="number" id="hold2-duration" step="0.1" min="0.1" value="0">
+      </div>
     </div>
     <div class="phase" id="phase-display">Get Ready</div>
     <div class="circle" id="circle">

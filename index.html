@@ -33,6 +33,10 @@
       width: 60%;
     }
 
+    .custom-inputs.hidden {
+      display: none;
+    }
+
     .custom-inputs label {
       display: block;
       margin-bottom: 5px;
@@ -144,7 +148,7 @@
 </head>
 <body>
   <div class="timer-container">
-    <div class="custom-inputs">
+    <div class="custom-inputs" id="custom-inputs">
       <div>
         <label for="inhale-duration">Inhale (s):</label>
         <input type="number" id="inhale-duration" step="0.1" min="0.1" value="4">
@@ -194,6 +198,7 @@
     const startButton = document.getElementById('start-button');
     const pauseButton = document.getElementById('pause-button');
     const resetButton = document.getElementById('reset-button');
+    const customInputs = document.getElementById('custom-inputs');
 
     const phases = [
       { name: 'Inhale', duration: inhaleDuration, class: 'inhale', sound: 'https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/juLIYuEYre10CvC03A1h/pub/J8mip7lBT6vgAWHXPxTQ.mp3' },
@@ -237,7 +242,12 @@
         totalDurationDisplay.textContent = 'Total Time: 0.0';
       } else {
         const currentPhase = phases[phaseIndex];
-        phaseDisplay.textContent = currentPhase.name;
+        if (currentPhase.duration > 0) {
+          phaseDisplay.textContent = currentPhase.name;
+        } else {
+          nextPhase();
+          return;
+        }
         circle.className = `circle ${currentPhase.class}`;
         circleTimer.textContent = formatTime(timeLeft);
         totalDurationDisplay.textContent = `Total Time: ${formatTime(totalTimeElapsed)}`;
@@ -260,6 +270,7 @@
       startButton.style.display = 'none';
       pauseButton.style.display = 'inline-block';
       resetButton.style.display = 'inline-block';
+      customInputs.classList.add('hidden');
 
       if (phaseIndex === -1) {
         phaseIndex = 0;
@@ -308,6 +319,7 @@
       startButton.style.display = 'inline-block';
       pauseButton.style.display = 'none';
       resetButton.style.display = 'none';
+      customInputs.classList.remove('hidden');
     }
 
     startButton.addEventListener('click', startTimer);
